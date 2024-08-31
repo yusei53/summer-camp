@@ -4,23 +4,13 @@ import { IconType } from "react-icons";
 type TProps = {
   label: string;
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  disabled?: boolean;
-  outline?: boolean;
-  del?: boolean;
   icon?: IconType;
   sx?: SxProps;
 };
 
-const CustomButton: React.FC<TProps> = ({
-  label,
-  onClick,
-  disabled,
-  icon: Icon,
-  sx,
-}) => {
+const CustomButton: React.FC<TProps> = ({ label, onClick, icon: Icon, sx }) => {
   return (
     <MuiButton
-      disabled={disabled}
       onClick={onClick}
       sx={{ position: "relative", textTransform: "none", fontSize: 15, ...sx }}
     >
