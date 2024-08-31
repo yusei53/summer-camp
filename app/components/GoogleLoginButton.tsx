@@ -4,9 +4,9 @@ import { FcGoogle } from "react-icons/fc";
 import Button from "./Button";
 import { signIn } from "next-auth/react";
 
-const GoogleButton = () => {
+const GoogleLoginButton = () => {
   return (
-    <Box>
+    <Box px={{ xs: 2, md: 5 }}>
       <Button
         label="Googleでログイン"
         icon={FcGoogle}
@@ -25,4 +25,4 @@ const GoogleButton = () => {
   );
 };
 
-export default GoogleButton;
+export default GoogleLoginButton;
