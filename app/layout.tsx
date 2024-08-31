@@ -17,7 +17,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body style={{ margin: 0 }}>
-        <Container maxWidth="md">{children}</Container>
+        <Container maxWidth="md" sx={{ my: 6 }}>
+          {children}
+        </Container>
       </body>
     </html>
   );
