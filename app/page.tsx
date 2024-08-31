@@ -1,4 +1,4 @@
-import GoogleLoginForm from "./components/GoogleLoginForm";
+import GoogleLoginForm from "./components/login/GoogleLoginForm";
 
 const Home = () => {
   return <GoogleLoginForm />;
