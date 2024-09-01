@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import prisma from "@/app/lib/prisma";
 import { getServerSession } from "next-auth";
 import authOptions from "../auth/[...nextauth]/options";
-import { Session } from "next-auth"; // 型定義のインポート
+import prisma from "@/app/lib/prisma";
 
 // 型定義の拡張
 declare module "next-auth" {
@@ -17,47 +16,36 @@ declare module "next-auth" {
 }
 
 export async function POST(req: NextRequest) {
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+  }
+
+  const userId = session?.user?.id;
+
   try {
-    const session: Session | null = await getServerSession(authOptions);
-
-    if (!session) {
-      return NextResponse.json(
-        { error: "You must be logged in to create a group" },
-        { status: 401 }
-      );
-    }
-
     const { groupName } = await req.json();
-    const user = session.user;
-
-    if (!user || !user.id) {
-      return NextResponse.json(
-        { error: "User ID is required" },
-        { status: 400 }
-      );
-    }
-
-    const userId: string = user.id;
 
     if (!groupName) {
       return NextResponse.json(
-        { error: "Group name is required" },
+        { message: "Group name is required" },
         { status: 400 }
       );
     }
 
-    const group = await prisma.group.create({
+    const newGroup = await prisma.group.create({
       data: {
         groupName,
         userId,
       },
     });
 
-    return NextResponse.json(group, { status: 201 });
+    return NextResponse.json(newGroup, { status: 201 });
   } catch (error) {
-    console.error("Error creating group:", error);
+    console.error(error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { message: "Error creating group" },
       { status: 500 }
     );
   }
