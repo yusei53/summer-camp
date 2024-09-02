@@ -1,9 +1,14 @@
 "use client";
 
 import React from "react";
+import CardComponent from "../components/card/CardComponent";
 
-const CardComponent: React.FC = () => {
-  return <p>カード一覧</p>;
+const CardPage: React.FC = () => {
+  return (
+    <div>
+      <CardComponent />
+    </div>
+  );
 };
 
-export default CardComponent;
+export default CardPage;
