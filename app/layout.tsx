@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Container } from "@mui/material";
+import AuthContext from "./context/AuthContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,9 +18,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body style={{ margin: 0 }}>
-        <Container maxWidth="md" sx={{ my: 6 }}>
-          {children}
-        </Container>
+        <AuthContext>
+          <Container maxWidth="md" sx={{ my: 6 }}>
+            {children}
+          </Container>
+        </AuthContext>
       </body>
     </html>
   );
