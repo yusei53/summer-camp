@@ -5,19 +5,33 @@ import React from "react";
 
 // 仮のデータ
 const postList = [
-  { id: 1, content: "株式会社〇〇" },
-  { id: 2, content: "株式会社〇〇" },
-  { id: 3, content: "株式会社〇〇" },
+  { id: 1, title: "ES", content: "株式会社〇〇" },
+  { id: 2, title: "ES", content: "株式会社△△" },
+  { id: 3, title: "遊び", content: "teamゆせで集まる" },
+  { id: 4, title: "バイト", content: "パン屋さん" },
 ];
+
+// カテゴリーごとに投稿をグループ化
+const allPosts = postList.reduce((acc, post) => {
+  if (!acc[post.title]) {
+    acc[post.title] = [];
+  }
+  acc[post.title].push(post);
+  return acc;
+}, {} as { [key: string]: typeof postList });
 
 const CardComponent: React.FC = () => {
   return (
     <Box className="displayPosts">
-      <h2>ES一覧</h2>
-      {postList.map((post) => (
-        <Box key={post.id} className="postContent" border={2} p={3} m={3}>
-          <Typography>{post.content}</Typography>
-          <button>削除</button>
+      {Object.keys(allPosts).map((title) => (
+        <Box key={title} className="postCategory">
+          <h2>{title}一覧</h2>
+          {allPosts[title].map((post) => (
+            <Box key={post.id} className="postContent" border={2} p={3} m={3}>
+              <Typography>{post.content}</Typography>
+              <button>削除</button>
+            </Box>
+          ))}
         </Box>
       ))}
     </Box>
