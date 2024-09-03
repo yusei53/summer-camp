@@ -11,7 +11,7 @@ const postList = [
   { id: 4, title: "バイト", content: "パン屋さん" },
 ];
 
-// カテゴリーごとに投稿をグループ化
+// titleごとにカテゴリー分けされるようにした
 const allPosts = postList.reduce((acc, post) => {
   if (!acc[post.title]) {
     acc[post.title] = [];
@@ -25,7 +25,9 @@ const CardComponent: React.FC = () => {
     <Box className="displayPosts">
       {Object.keys(allPosts).map((title) => (
         <Box key={title} className="postCategory">
-          <h2>{title}一覧</h2>
+          <Box fontSize={20} fontWeight="bold" m={3}>
+            {title}一覧
+          </Box>
           {allPosts[title].map((post) => (
             <Box key={post.id} className="postContent" border={2} p={3} m={3}>
               <Typography>{post.content}</Typography>
