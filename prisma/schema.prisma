@@ -45,25 +45,33 @@ model Account {
 model Group {
   id        String  @id @default(uuid())
   userId    String
-  posts     Post[]
   groupName String
   user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  posts     Post[]
+  categories Category[]
 }
 
 model Post {
-  id         String        @id @default(uuid())
-  groupId    String
-  group      Group         @relation(fields: [groupId], references: [id])
-  title      String
-  attributes PostAttribute[]
-  createdAt  DateTime      @default(now())
-  updatedAt  DateTime      @updatedAt
+  id        String      @id @default(uuid())
+  title     String
+  groupId   String
+  group     Group       @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  descriptions Description[]
 }
 
-model PostAttribute {
-  id     String @id @default(uuid())
-  postId String
-  post   Post   @relation(fields: [postId], references: [id])
-  key    String
-  value  String
+model Category {
+  id        Int         @id @default(autoincrement())
+  name      String
+  groupId   String
+  group     Group       @relation(fields: [groupId], references: [id])
+  descriptions Description[]
+}
+
+model Description {
+  id          Int       @id @default(autoincrement())
+  content     String
+  postId      String
+  post        Post       @relation(fields: [postId], references: [id], onDelete: Cascade)
+  categoryId  Int
+  category    Category   @relation(fields: [categoryId], references: [id])
 }
