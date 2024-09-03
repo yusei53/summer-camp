@@ -31,10 +31,11 @@ const GroupFormContainer = () => {
     try {
       const response = await axios.post("/api/groups", data);
       if (response.status === 201) {
-        router.push("/test");
+        const groupId = response.data.id;
+        router.push(`/groups/${groupId}`);
       }
     } catch (error) {
-      console.log("Login failed: " + error);
+      console.log("Group creation failed: " + error);
     } finally {
       setLoading(false);
     }
