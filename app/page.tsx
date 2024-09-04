@@ -1,3 +1,4 @@
+"use client";
 import getCurrentUser from "./actions/getCurrentUser";
 import GoogleLoginForm from "./components/auth/GoogleLoginForm";
 import LogoutButton from "./components/auth/LogoutButton";
