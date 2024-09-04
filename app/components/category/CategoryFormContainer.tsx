@@ -50,7 +50,7 @@ const CategoryFormContainer = ({ groupId }: { groupId: string }) => {
       });
 
       if (response.status === 201) {
-        router.push("/test");
+        router.push(`/category/${groupId}`);
       }
     } catch (error) {
       console.log("Category creation failed: " + error);
