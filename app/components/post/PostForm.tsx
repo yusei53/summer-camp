@@ -54,16 +54,9 @@ const PostForm: React.FC<TProps> = ({
           flexDirection={"column"}
           alignItems="left"
           width="100%"
-          mb={2}
+          my={2}
         >
-          <Typography variant="body1" sx={{ mr: 2 }}>
-            {categories[index]?.name}
-          </Typography>
-          <input
-            type="hidden"
-            {...register(`descriptions.${index}.categoryId`)} // categoryId を hidden フィールドで送信
-            value={field.id}
-          />
+          <Typography variant="body1">{categories[index]?.name}</Typography>
           <CustomInput
             id={`descriptions.${index}.content`}
             label={`説明 ${index + 1}`}
@@ -72,15 +65,18 @@ const PostForm: React.FC<TProps> = ({
             required
             errors={errors}
           />
+          <input
+            type="hidden"
+            {...register(`descriptions.${index}.categoryId`)} // categoryId を hidden フィールドで送信
+            value={field.id}
+          />
         </Box>
       ))}
-
       <Button
         type="submit"
-        fullWidth
         variant="contained"
         color="primary"
-        sx={{ mt: 3, mb: 2 }}
+        sx={{ mt: 3, mb: 2, px: 15 }}
         disabled={loading}
       >
         {loading ? "作成中..." : "Post を作成"}
