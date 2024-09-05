@@ -29,6 +29,7 @@ const PostForm: React.FC<TProps> = ({
       flexDirection="column"
       alignItems="center"
       justifyContent="center"
+      mx={{ xs: 2, md: 15 }}
       mt={5}
       onSubmit={onSubmit}
     >
@@ -50,7 +51,8 @@ const PostForm: React.FC<TProps> = ({
         <Box
           key={field.id}
           display="flex"
-          alignItems="center"
+          flexDirection={"column"}
+          alignItems="left"
           width="100%"
           mb={2}
         >
