@@ -6,7 +6,6 @@ type Category = {
   id: number;
   name: string;
 };
-
 type TProps = {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
   register: UseFormRegister<FieldValues>;
@@ -14,7 +13,6 @@ type TProps = {
   loading: boolean;
   categories: Category[];
 };
-
 const PostForm: React.FC<TProps> = ({
   onSubmit,
   register,
@@ -33,19 +31,19 @@ const PostForm: React.FC<TProps> = ({
       mt={5}
       onSubmit={onSubmit}
     >
-      <Typography variant="h4" component="h1" gutterBottom>
+      <Typography variant="h4" component="h1" mb={2} gutterBottom>
         Post の作成
       </Typography>
-
-      <CustomInput
-        id="title"
-        label="タイトル"
-        register={register}
-        disabled={loading}
-        required
-        errors={errors}
-      />
-
+      <Box width="100%" my={2}>
+        <CustomInput
+          id="title"
+          label="タイトル"
+          register={register}
+          disabled={loading}
+          required
+          errors={errors}
+        />
+      </Box>
       {/* 各カテゴリに対応する説明フィールド */}
       {categories.map((field, index) => (
         <Box
