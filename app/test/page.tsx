@@ -1,7 +1,9 @@
-import React from "react";
+import GroupList from "../components/group/GroupList";
+import getCurrentUser from "../actions/getCurrentUser";
 
-const page = () => {
-  return <div>投稿に成功</div>;
+const page = async () => {
+  const currentUser = await getCurrentUser();
+  return <GroupList currentUserId={currentUser && currentUser.id} />;
 };
 
 export default page;
