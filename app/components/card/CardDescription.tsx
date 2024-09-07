@@ -25,9 +25,9 @@ const CardDescription = () => {
   };
 
   return (
-    <Box>
+    <Box position="relative">
       {posts.map((post) => (
-        <Box key={post.id} onClick={() => handleOpenModal(post)} mr={2}>
+        <Box key={post.id} onClick={() => handleOpenModal(post)}>
           <Box fontSize={20} fontWeight="bold" m={3}>
             {post.CardTitle}
           </Box>
@@ -35,7 +35,17 @@ const CardDescription = () => {
       ))}
 
       <Modal open={IsModalOpen} onClose={handleCloseModal}>
-        <Box position="absolute" bgcolor="white" p={4} m={25}>
+        <Box
+          position="absolute"
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          p={4}
+          m={10}
+          bgcolor="white"
+          border="solid 4px"
+          borderRadius="5px"
+        >
           {selectedPost && (
             <ItemCardDescription
               id={selectedPost.id}
