@@ -74,7 +74,7 @@ const PostForm: React.FC<TProps> = ({
         type="submit"
         variant="contained"
         color="primary"
-        sx={{ mt: 3, mb: 2, px: 15 }}
+        sx={{ mt: 3, mb: 2, px: { xs: 10, md: 15 } }}
         disabled={loading}
       >
         {loading ? "作成中..." : "Post を作成"}
