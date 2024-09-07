@@ -35,16 +35,7 @@ const CardDescription = () => {
       ))}
 
       <Modal open={IsModalOpen} onClose={handleCloseModal}>
-        <Box
-          sx={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            bgcolor: "white",
-            p: 4,
-          }}
-        >
+        <Box position="absolute" bgcolor="white" p={4} m={25}>
           {selectedPost && (
             <ItemCardDescription
               id={selectedPost.id}
