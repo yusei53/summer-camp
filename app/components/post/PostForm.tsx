@@ -6,7 +6,6 @@ type Category = {
   id: number;
   name: string;
 };
-
 type TProps = {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
   register: UseFormRegister<FieldValues>;
@@ -29,13 +28,13 @@ const PostForm: React.FC<TProps> = ({
       flexDirection="column"
       alignItems="center"
       justifyContent="center"
+      mx={{ xs: 2, md: 15 }}
       mt={5}
       onSubmit={onSubmit}
     >
-      <Typography variant="h4" component="h1" gutterBottom>
+      <Typography variant="h4" component="h1" mb={2} gutterBottom>
         Post の作成
       </Typography>
-
       <CustomInput
         id="title"
         label="タイトル"
@@ -43,25 +42,19 @@ const PostForm: React.FC<TProps> = ({
         disabled={loading}
         required
         errors={errors}
+        sx={{ my: 2 }}
       />
-
       {/* 各カテゴリに対応する説明フィールド */}
       {categories.map((field, index) => (
         <Box
           key={field.id}
           display="flex"
-          alignItems="center"
+          flexDirection={"column"}
+          alignItems="left"
           width="100%"
-          mb={2}
+          my={2}
         >
-          <Typography variant="body1" sx={{ mr: 2 }}>
-            {categories[index]?.name}
-          </Typography>
-          <input
-            type="hidden"
-            {...register(`descriptions.${index}.categoryId`)} // categoryId を hidden フィールドで送信
-            value={field.id}
-          />
+          <Typography variant="body1">{categories[index]?.name}</Typography>
           <CustomInput
             id={`descriptions.${index}.content`}
             label={`説明 ${index + 1}`}
@@ -70,15 +63,18 @@ const PostForm: React.FC<TProps> = ({
             required
             errors={errors}
           />
+          <input
+            type="hidden"
+            {...register(`descriptions.${index}.categoryId`)} // categoryId を hidden フィールドで送信
+            value={field.id}
+          />
         </Box>
       ))}
-
       <Button
         type="submit"
-        fullWidth
         variant="contained"
         color="primary"
-        sx={{ mt: 3, mb: 2 }}
+        sx={{ mt: 3, mb: 2, px: { xs: 10, md: 15 } }}
         disabled={loading}
       >
         {loading ? "作成中..." : "Post を作成"}

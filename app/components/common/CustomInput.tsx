@@ -37,7 +37,6 @@ const CustomInput: React.FC<TProps> = ({
       onChange={onChange}
       size="small"
       fullWidth
-      margin="normal"
     />
   );
 };
