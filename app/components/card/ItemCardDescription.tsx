@@ -3,20 +3,20 @@ import { Box, Typography } from "@mui/material";
 // Propsの型定義
 interface ItemCardDescriptionProps {
   id: number;
-  cardtitle: string;
-  cardcontent: string;
+  CardTitle: string;
+  CardContent: string;
 }
 
 const ItemCardDescription: React.FC<ItemCardDescriptionProps> = ({
-  cardtitle,
-  cardcontent,
+  CardTitle,
+  CardContent,
 }) => {
   return (
     <Box>
       <Typography variant="h6" component="h2">
-        {cardtitle}
+        {CardTitle}
       </Typography>
-      <Typography variant="body1">{cardcontent}</Typography>
+      <Typography variant="body1">{CardContent}</Typography>
     </Box>
   );
 };
