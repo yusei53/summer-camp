@@ -85,12 +85,11 @@ const CategoryForm: React.FC<TProps> = ({
         </Button>
         <Button
           type="submit"
-          fullWidth
           variant="contained"
           color="primary"
-          sx={{ mt: 3, mb: 2 }}
+          sx={{ mt: 3, mb: 2, px: { xs: 10, mt: 15 } }}
         >
-          {loading ? "追加中" : "追加"}
+          {loading ? "作成中" : "カテゴリーを作成"}
         </Button>
       </Box>
     </Container>
