@@ -26,8 +26,8 @@ const GroupForm: React.FC<TProps> = ({
         mt={5}
         onSubmit={onSubmit}
       >
-        <Typography variant="h4" component="h1" gutterBottom>
-          追加
+        <Typography variant="h5" component="h1" gutterBottom>
+          グループを作成
         </Typography>
         <CustomInput
           id="groupName"
