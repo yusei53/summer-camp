@@ -44,7 +44,7 @@ const CategoryForm: React.FC<TProps> = ({
         onSubmit={onSubmit}
       >
         <Typography variant="h5" component="h1" gutterBottom>
-          カテゴリーを追加
+          カテゴリーを作成
         </Typography>
         {fields.map((field, index) => (
           <Box
