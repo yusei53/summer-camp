@@ -1,23 +1,33 @@
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 
 // Propsの型定義
-interface ItemCardDescriptionProps {
+type ItemCardDescriptionProps = {
   id: number;
-  CardTitle: string;
-  CardContent: string;
-}
+  cardTitle: string;
+  posts: Posts[];
+};
+
+type Posts = {
+  category: string;
+  description: string;
+};
 
 const ItemCardDescription: React.FC<ItemCardDescriptionProps> = ({
-  CardTitle,
-  CardContent,
+  cardTitle,
+  posts,
 }) => {
   return (
-    <Box>
+    <>
       <Typography variant="h6" component="h2">
-        {CardTitle}
+        {cardTitle}
       </Typography>
-      <Typography variant="body1">{CardContent}</Typography>
-    </Box>
+      {posts.map((post) => (
+        <>
+          <Typography variant="body1">{post.category}</Typography>
+          <Typography variant="body1">{post.description}</Typography>
+        </>
+      ))}
+    </>
   );
 };
 
