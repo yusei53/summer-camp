@@ -10,7 +10,7 @@ import {
 } from "react-hook-form";
 import CustomInput from "../common/CustomInput";
 import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 type TProps = {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
@@ -43,12 +43,17 @@ const CategoryForm: React.FC<TProps> = ({
         mt={5}
         onSubmit={onSubmit}
       >
-        <Typography variant="h4" component="h1" gutterBottom>
-          カテゴリーを追加
+        <Typography variant="h5" component="h1" gutterBottom>
+          カテゴリーを作成
         </Typography>
-
         {fields.map((field, index) => (
-          <Box key={field.id} display="flex" alignItems="center" width="100%">
+          <Box
+            key={field.id}
+            display="flex"
+            alignItems="center"
+            width="100%"
+            my={2}
+          >
             <CustomInput
               id={`categories.${index}.name`}
               label={`カテゴリー ${index + 1}`}
@@ -62,16 +67,15 @@ const CategoryForm: React.FC<TProps> = ({
               disabled={loading}
               aria-label="remove"
             >
-              <RemoveIcon />
+              <DeleteIcon />
             </IconButton>
           </Box>
         ))}
-
         <Button
           type="button"
           fullWidth
           variant="outlined"
-          color="secondary"
+          color="primary"
           onClick={() => append({ name: "" })}
           sx={{ mt: 3 }}
           disabled={loading}
@@ -79,15 +83,13 @@ const CategoryForm: React.FC<TProps> = ({
         >
           カテゴリーを追加
         </Button>
-
         <Button
           type="submit"
-          fullWidth
           variant="contained"
           color="primary"
-          sx={{ mt: 3, mb: 2 }}
+          sx={{ mt: 3, mb: 2, px: { xs: 10, mt: 15 } }}
         >
-          {loading ? "追加中" : "追加"}
+          {loading ? "作成中" : "カテゴリーを作成"}
         </Button>
       </Box>
     </Container>
