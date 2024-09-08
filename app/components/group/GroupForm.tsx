@@ -29,14 +29,16 @@ const GroupForm: React.FC<TProps> = ({
         <Typography variant="h5" component="h1" gutterBottom>
           グループを作成
         </Typography>
-        <CustomInput
-          id="groupName"
-          label="グループ"
-          disabled={loading}
-          register={register}
-          errors={errors}
-          required
-        />
+        <Box my={2} width={"100%"}>
+          <CustomInput
+            id="groupName"
+            label="グループ"
+            disabled={loading}
+            register={register}
+            errors={errors}
+            required
+          />
+        </Box>
         <Button
           type="submit"
           variant="contained"
