@@ -1,4 +1,4 @@
-import getPosts from "@/app/actions/getPosts";
+import getPosts from "@/actions/getPosts";
 
 const PostList = async ({ groupId }: { groupId: string }) => {
   const posts = await getPosts(groupId);

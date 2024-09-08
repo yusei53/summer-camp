@@ -1,4 +1,4 @@
-import getCurrentUser from "@/app/actions/getCurrentUser";
+import getCurrentUser from "@/actions/getCurrentUser";
 import CategoryFormContainer from "@/app/components/category/CategoryFormContainer";
 
 const GroupPage = async ({ params }: { params: { groupId: string } }) => {

@@ -1,4 +1,4 @@
-import getGroups from "@/app/actions/getGroups";
+import getGroups from "@/actions/getGroups";
 import { Box } from "@mui/material";
 import { User } from "@prisma/client";
 import React from "react";

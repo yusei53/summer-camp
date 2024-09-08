@@ -1,4 +1,4 @@
-import prisma from "@/app/lib/prisma";
+import prisma from "@/lib/prisma";
 const getPosts = async (groupId: string) => {
   try {
     const posts = await prisma.post.findMany({

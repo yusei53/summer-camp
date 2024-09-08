@@ -1,4 +1,4 @@
-import getCategories from "@/app/actions/getCategories";
+import getCategories from "@/actions/getCategories";
 import PostFormContainer from "@/app/components/post/PostFormContainer";
 import PostList from "@/app/components/post/PostList";
 

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Container } from "@mui/material";
-import AuthContext from "./context/AuthContext";
+import AuthContext from "../context/AuthContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
