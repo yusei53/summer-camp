@@ -1,6 +1,5 @@
 import prisma from "@/app/lib/prisma";
 
-// カテゴリ一覧取得
 const getCategories = async (groupId: string) => {
   try {
     const categories = await prisma.category.findMany({
