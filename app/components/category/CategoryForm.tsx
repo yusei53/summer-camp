@@ -46,9 +46,14 @@ const CategoryForm: React.FC<TProps> = ({
         <Typography variant="h4" component="h1" gutterBottom>
           カテゴリーを追加
         </Typography>
-
         {fields.map((field, index) => (
-          <Box key={field.id} display="flex" alignItems="center" width="100%">
+          <Box
+            key={field.id}
+            display="flex"
+            alignItems="center"
+            width="100%"
+            sx={{ my: 2 }}
+          >
             <CustomInput
               id={`categories.${index}.name`}
               label={`カテゴリー ${index + 1}`}
@@ -66,7 +71,6 @@ const CategoryForm: React.FC<TProps> = ({
             </IconButton>
           </Box>
         ))}
-
         <Button
           type="button"
           fullWidth
@@ -79,7 +83,6 @@ const CategoryForm: React.FC<TProps> = ({
         >
           カテゴリーを追加
         </Button>
-
         <Button
           type="submit"
           fullWidth
