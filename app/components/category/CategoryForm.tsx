@@ -52,7 +52,7 @@ const CategoryForm: React.FC<TProps> = ({
             display="flex"
             alignItems="center"
             width="100%"
-            sx={{ my: 2 }}
+            my={2}
           >
             <CustomInput
               id={`categories.${index}.name`}
