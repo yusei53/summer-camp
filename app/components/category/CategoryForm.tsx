@@ -75,7 +75,7 @@ const CategoryForm: React.FC<TProps> = ({
           type="button"
           fullWidth
           variant="outlined"
-          color="secondary"
+          color="primary"
           onClick={() => append({ name: "" })}
           sx={{ mt: 3 }}
           disabled={loading}
