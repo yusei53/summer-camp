@@ -1,6 +1,5 @@
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import CategoryFormContainer from "@/app/components/category/CategoryFormContainer";
-import { useRouter } from "next/navigation";
 
 const GroupPage = async ({ params }: { params: { groupId: string } }) => {
   const { groupId } = params;

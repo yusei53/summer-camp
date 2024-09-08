@@ -3,7 +3,7 @@ import getCurrentUser from "../actions/getCurrentUser";
 
 const page = async () => {
   const currentUser = await getCurrentUser();
-  return <GroupList currentUserId={currentUser && currentUser.id} />;
+  return <GroupList currentUserId={currentUser?.id} />;
 };
 
 export default page;

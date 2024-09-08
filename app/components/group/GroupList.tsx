@@ -4,7 +4,7 @@ import { User } from "@prisma/client";
 import React from "react";
 
 type TProps = {
-  currentUserId: User["id"] | null;
+  currentUserId: User["id"] | undefined;
 };
 
 const GroupList: React.FC<TProps> = async ({ currentUserId }) => {
