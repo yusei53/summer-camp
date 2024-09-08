@@ -10,7 +10,7 @@ import {
 } from "react-hook-form";
 import CustomInput from "../common/CustomInput";
 import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 type TProps = {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
@@ -62,7 +62,7 @@ const CategoryForm: React.FC<TProps> = ({
               disabled={loading}
               aria-label="remove"
             >
-              <RemoveIcon />
+              <DeleteIcon />
             </IconButton>
           </Box>
         ))}
