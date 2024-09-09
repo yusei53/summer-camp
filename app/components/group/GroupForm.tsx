@@ -1,4 +1,4 @@
-import { Button, Container, Typography, Box } from "@mui/material";
+import { Button, Container, Typography, Box, Modal } from "@mui/material";
 import { FieldValues, UseFormRegister, FormState } from "react-hook-form";
 import CustomInput from "../common/CustomInput";
 
@@ -7,6 +7,8 @@ type TProps = {
   register: UseFormRegister<FieldValues>;
   errors: FormState<FieldValues>["errors"];
   loading: boolean;
+  modalOpen: boolean;
+  setModalOpen: (open: boolean) => void;
 };
 
 const GroupForm: React.FC<TProps> = ({
@@ -14,40 +16,72 @@ const GroupForm: React.FC<TProps> = ({
   register,
   errors,
   loading,
+  modalOpen,
+  setModalOpen,
 }) => {
+  const handleOpenModal = () => {
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  };
   return (
-    <Container maxWidth="sm">
-      <Box
-        component="form"
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="center"
-        mt={5}
-        onSubmit={onSubmit}
+    <>
+      <Button
+        onClick={handleOpenModal}
+        sx={{ mb: 3, color: "white", bgcolor: "blue" }}
       >
-        <Typography variant="h5" component="h1" gutterBottom>
-          グループを作成
-        </Typography>
-        <CustomInput
-          id="groupName"
-          label="グループ"
-          disabled={loading}
-          register={register}
-          errors={errors}
-          required
-          sx={{ my: 2 }}
-        />
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          sx={{ mt: 3, mb: 2, px: { xs: 10, mt: 15 } }}
+        新規作成
+      </Button>
+      <Modal open={modalOpen} onClose={handleCloseModal} disableAutoFocus>
+        <Box
+          component="form"
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="center"
+          mt={5}
+          onSubmit={onSubmit}
         >
-          {loading ? "作成中" : "グループを作成"}
-        </Button>
-      </Box>
-    </Container>
+          <Box
+            position="absolute"
+            top="50%"
+            left="50%"
+            p={4}
+            maxHeight={{ xs: "60%", md: "80%" }}
+            minWidth={{ xs: 300, md: 400 }}
+            bgcolor="white"
+            borderRadius="5px"
+            sx={{
+              transform: "translate(-50%, -50%)",
+              overflowY: "scroll",
+            }}
+          >
+            <Typography variant="h5" component="h1" gutterBottom>
+              グループを作成
+            </Typography>
+            <CustomInput
+              id="groupName"
+              label="グループ"
+              disabled={loading}
+              register={register}
+              errors={errors}
+              required
+              sx={{ my: 2 }}
+            />
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              sx={{ mt: 3, mb: 2, px: { xs: 10, mt: 15 } }}
+            >
+              {loading ? "作成中" : "グループを作成"}
+            </Button>
+          </Box>
+        </Box>
+      </Modal>
+    </>
   );
 };
 

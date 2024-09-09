@@ -14,6 +14,7 @@ const schema = z.object({
 const GroupFormContainer = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const {
     register,
@@ -47,6 +48,8 @@ const GroupFormContainer = () => {
       register={register}
       errors={errors}
       loading={loading}
+      modalOpen={modalOpen} // モーダルの開閉状態を渡す
+      setModalOpen={setModalOpen}
     />
   );
 };
