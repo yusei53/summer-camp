@@ -42,12 +42,17 @@ const GroupList: React.FC<TProps> = async ({ currentUserId }) => {
               borderRadius: "16px",
             }}
           >
-            <Box>
-              <CardContent>
-                <EditCalendarIcon />
-                <Typography component="div">{group.groupName}</Typography>
-              </CardContent>
-            </Box>
+            <CardContent
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <EditCalendarIcon sx={{ fontSize: 40, my: 4 }} />
+              <Typography component="div">{group.groupName}</Typography>
+            </CardContent>
           </Card>
         </Grid>
       ))}
