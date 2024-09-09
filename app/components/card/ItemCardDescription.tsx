@@ -1,35 +1,39 @@
 import { Typography } from "@mui/material";
+import { Fragment } from "react";
 
-// Propsの型定義
 type ItemCardDescriptionProps = {
   id: number;
-  cardTitle: string;
-  posts: Posts[];
+  postTitle: string;
+  descriptions: Descriptions[];
 };
 
-type Posts = {
-  category: string;
-  description: string;
+type Descriptions = {
+  category: {
+    name: string;
+  };
+  id: number;
+  content: string;
 };
 
 const ItemCardDescription: React.FC<ItemCardDescriptionProps> = ({
-  cardTitle,
-  posts,
+  id,
+  postTitle,
+  descriptions,
 }) => {
   return (
-    <>
+    <Fragment key={id}>
       <Typography variant="h6" component="h2">
-        {cardTitle}
+        {postTitle}
       </Typography>
-      {posts.map((post) => (
-        <>
+      {descriptions.map((description) => (
+        <Fragment key={description.id}>
           <Typography mt={3} mb={1} fontWeight="bold" fontSize={20}>
-            {post.category}
+            {description.category.name}
           </Typography>
-          <Typography>{post.description}</Typography>
-        </>
+          <Typography>{description.content}</Typography>
+        </Fragment>
       ))}
-    </>
+    </Fragment>
   );
 };
 
