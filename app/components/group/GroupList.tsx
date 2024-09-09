@@ -4,7 +4,7 @@ import { User } from "@prisma/client";
 import React from "react";
 import EditCalendarIcon from "@mui/icons-material/EditCalendar";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
-import AssignmentTurnedInOutlinedIcon from "@mui/icons-material/AssignmentTurnedInOutlined";
+import ColorLensIcon from "@mui/icons-material/ColorLens";
 import Link from "next/link";
 type TProps = {
   currentUserId: User["id"] | undefined;
@@ -68,7 +68,7 @@ const GroupList: React.FC<TProps> = async ({ currentUserId }) => {
                 <Typography>{group.groupName}</Typography>
               </Box>
               <Box>
-                <AssignmentTurnedInOutlinedIcon
+                <ColorLensIcon
                   sx={{
                     position: "absolute",
                     bottom: 10,
