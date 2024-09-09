@@ -14,6 +14,7 @@ const schema = z.object({
 const GroupFormContainer = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const {
     register,
@@ -31,8 +32,9 @@ const GroupFormContainer = () => {
     try {
       const response = await axios.post("/api/groups", data);
       if (response.status === 201) {
-        const groupId = response.data.id;
-        router.push(`/groups/${groupId}`);
+        setModalOpen(false);
+        router.push(`/`);
+        router.refresh();
       }
     } catch (error) {
       console.log("Group creation failed: " + error);
@@ -47,6 +49,8 @@ const GroupFormContainer = () => {
       register={register}
       errors={errors}
       loading={loading}
+      modalOpen={modalOpen} // モーダルの開閉状態を渡す
+      setModalOpen={setModalOpen} // モーダルの開閉状態を変更する関数を渡す
     />
   );
 };
