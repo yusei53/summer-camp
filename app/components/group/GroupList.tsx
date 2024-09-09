@@ -3,7 +3,7 @@ import { Box, Card, CardContent, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { User } from "@prisma/client";
 import React from "react";
-
+import EditCalendarIcon from "@mui/icons-material/EditCalendar";
 type TProps = {
   currentUserId: User["id"] | undefined;
 };
@@ -42,9 +42,12 @@ const GroupList: React.FC<TProps> = async ({ currentUserId }) => {
               borderRadius: "16px",
             }}
           >
-            <CardContent>
-              <Typography component="div">{group.groupName}</Typography>
-            </CardContent>
+            <Box>
+              <CardContent>
+                <EditCalendarIcon />
+                <Typography component="div">{group.groupName}</Typography>
+              </CardContent>
+            </Box>
           </Card>
         </Grid>
       ))}
