@@ -1,6 +1,5 @@
 "use client";
-
-import React, { useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { useForm, FieldValues, SubmitHandler } from "react-hook-form";
@@ -32,6 +31,7 @@ const PostFormContainer = ({
 }) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const {
     register,
@@ -42,7 +42,7 @@ const PostFormContainer = ({
       title: "",
       descriptions: categories.map((category) => ({
         content: "",
-        categoryId: category.id, // 各カテゴリにIDを設定
+        categoryId: category.id,
       })),
     },
     resolver: zodResolver(schema),
@@ -53,12 +53,14 @@ const PostFormContainer = ({
     try {
       const response = await axios.post("/api/posts", {
         title: data.title,
-        descriptions: data.descriptions, // description と categoryId を送信
+        descriptions: data.descriptions,
         groupId,
       });
 
       if (response.status === 201) {
-        router.push(`/test`);
+        setModalOpen(false);
+        router.push(`/category/${groupId}`);
+        router.refresh();
       }
     } catch (error) {
       console.log("Post creation failed: " + error);
@@ -74,6 +76,8 @@ const PostFormContainer = ({
       errors={errors}
       loading={loading}
       categories={categories}
+      modalOpen={modalOpen} // モーダルの開閉状態を渡す
+      setModalOpen={setModalOpen} // モーダルの開閉状態を変更する関数を渡す
     />
   );
 };

@@ -34,23 +34,34 @@ const CategoryForm: React.FC<TProps> = ({
 }) => {
   return (
     <Container maxWidth="sm">
-      <Box
-        component="form"
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="center"
-        mt={5}
-        onSubmit={onSubmit}
-      >
-        <Typography variant="h5" component="h1" gutterBottom>
+      <Box component="form" mt={5} onSubmit={onSubmit}>
+        <Typography
+          textAlign={"center"}
+          variant="h5"
+          component="h1"
+          gutterBottom
+        >
           カテゴリーを作成
         </Typography>
+        <Box display={"flex"} justifyContent={"flex-end"} mb={6}>
+          <Button
+            type="button"
+            variant="outlined"
+            color="primary"
+            onClick={() => append({ name: "" })}
+            sx={{ mt: 3 }}
+            disabled={loading}
+            startIcon={<AddIcon />}
+          >
+            カテゴリーを追加
+          </Button>
+        </Box>
         {fields.map((field, index) => (
           <Box
             key={field.id}
             display="flex"
             alignItems="center"
+            justifyContent="center"
             width="100%"
             my={2}
           >
@@ -71,26 +82,21 @@ const CategoryForm: React.FC<TProps> = ({
             </IconButton>
           </Box>
         ))}
-        <Button
-          type="button"
-          fullWidth
-          variant="outlined"
-          color="primary"
-          onClick={() => append({ name: "" })}
-          sx={{ mt: 3 }}
-          disabled={loading}
-          startIcon={<AddIcon />}
-        >
-          カテゴリーを追加
-        </Button>
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          sx={{ mt: 3, mb: 2, px: { xs: 10, mt: 15 } }}
-        >
-          {loading ? "作成中" : "カテゴリーを作成"}
-        </Button>
+
+        <Box textAlign={"center"}>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            sx={{
+              mt: 3,
+              mb: 2,
+              px: { xs: 10, mt: 15 },
+            }}
+          >
+            {loading ? "作成中" : "カテゴリーを作成"}
+          </Button>
+        </Box>
       </Box>
     </Container>
   );
