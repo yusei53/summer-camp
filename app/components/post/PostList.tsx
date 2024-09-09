@@ -1,6 +1,6 @@
 "use client";
 import { Fragment, useState } from "react";
-import { Modal, Box } from "@mui/material";
+import { Modal, Box, Typography } from "@mui/material";
 import ItemCard from "../card/ItemCard";
 import ItemCardDescription from "../card/ItemCardDescription";
 
@@ -34,14 +34,15 @@ const PostList: React.FC<PostListProps> = ({ posts }) => {
 
   return (
     <Box position="relative">
-      {posts.map((post) => (
-        <Fragment key={post.id}>
-          <Box onClick={() => handleOpenModal(post.id)}>
-            <ItemCard postTitle={post.title} />
-          </Box>
-          {post.descriptions.map((description) => (
-            <Fragment key={description.id}>
+      {posts.length > 0 ? (
+        posts.map((post) => (
+          <Fragment key={post.id}>
+            <Box onClick={() => handleOpenModal(post.id)}>
+              <ItemCard postTitle={post.title} />
+            </Box>
+            {post.descriptions.map((description) => (
               <Modal
+                key={description.id}
                 open={openPostId === post.id}
                 onClose={handleCloseModal}
                 disableAutoFocus
@@ -67,10 +68,21 @@ const PostList: React.FC<PostListProps> = ({ posts }) => {
                   />
                 </Box>
               </Modal>
-            </Fragment>
-          ))}
-        </Fragment>
-      ))}
+            ))}
+          </Fragment>
+        ))
+      ) : (
+        <Typography
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          fontSize={20}
+          fontWeight="bold"
+          mt={20}
+        >
+          Postが作成されていません
+        </Typography>
+      )}
     </Box>
   );
 };
