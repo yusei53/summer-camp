@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { FieldValues, FormState, UseFormRegister } from "react-hook-form";
 import { Box, Typography, Button, Modal } from "@mui/material";
 import CustomInput from "../common/CustomInput";
@@ -14,6 +14,8 @@ type TProps = {
   errors: FormState<FieldValues>["errors"];
   loading: boolean;
   categories: Category[];
+  modalOpen: boolean; // モーダルの開閉状態
+  setModalOpen: (open: boolean) => void; // モーダルの開閉状態を管理する関数
 };
 
 const PostForm: React.FC<TProps> = ({
@@ -22,15 +24,15 @@ const PostForm: React.FC<TProps> = ({
   errors,
   loading,
   categories,
+  modalOpen,
+  setModalOpen,
 }) => {
-  const [open, setOpen] = useState(false);
-
   const handleOpenModal = () => {
-    setOpen(true);
+    setModalOpen(true);
   };
 
   const handleCloseModal = () => {
-    setOpen(false);
+    setModalOpen(false);
   };
 
   return (
@@ -42,7 +44,7 @@ const PostForm: React.FC<TProps> = ({
         新規作成
       </Button>
 
-      <Modal open={open} onClose={handleCloseModal} disableAutoFocus>
+      <Modal open={modalOpen} onClose={handleCloseModal} disableAutoFocus>
         <Box
           component="form"
           display="flex"
