@@ -4,6 +4,8 @@ import Grid from "@mui/material/Grid2";
 import { User } from "@prisma/client";
 import React from "react";
 import EditCalendarIcon from "@mui/icons-material/EditCalendar";
+import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
+import AssignmentTurnedInOutlinedIcon from "@mui/icons-material/AssignmentTurnedInOutlined";
 type TProps = {
   currentUserId: User["id"] | undefined;
 };
@@ -50,9 +52,18 @@ const GroupList: React.FC<TProps> = async ({ currentUserId }) => {
                 alignItems: "center",
               }}
             >
-              <EditCalendarIcon sx={{ fontSize: 40, my: 4 }} />
-              <Typography component="div">{group.groupName}</Typography>
+              <EditCalendarIcon sx={{ fontSize: 40, mt: 4, mb: 3 }} />
             </CardContent>
+            <Box
+              display="flex"
+              flexDirection="row"
+              alignItems={"flex-start"}
+              ml={1}
+            >
+              <FiberManualRecordIcon sx={{ fontSize: 20 }} />
+              <Typography component="div">{group.groupName}</Typography>
+            </Box>
+            <AssignmentTurnedInOutlinedIcon sx={{ ml: 18 }} />
           </Card>
         </Grid>
       ))}
