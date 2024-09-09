@@ -28,12 +28,16 @@ const GroupForm: React.FC<TProps> = ({
   };
   return (
     <>
-      <Button
-        onClick={handleOpenModal}
-        sx={{ mb: 3, color: "white", bgcolor: "blue" }}
-      >
-        新規作成
-      </Button>
+      <Box display={"flex"} justifyContent={"flex-end"} mb={3} mr={5}>
+        <Button
+          onClick={handleOpenModal}
+          sx={{ mb: 3 }}
+          variant="contained"
+          color="primary"
+        >
+          新規作成
+        </Button>
+      </Box>
       <Modal open={modalOpen} onClose={handleCloseModal} disableAutoFocus>
         <Box
           component="form"
@@ -55,10 +59,14 @@ const GroupForm: React.FC<TProps> = ({
             borderRadius="5px"
             sx={{
               transform: "translate(-50%, -50%)",
-              overflowY: "scroll",
             }}
           >
-            <Typography variant="h5" component="h1" gutterBottom>
+            <Typography
+              variant="h5"
+              component="h1"
+              gutterBottom
+              textAlign="center"
+            >
               グループを作成
             </Typography>
             <CustomInput
@@ -70,14 +78,16 @@ const GroupForm: React.FC<TProps> = ({
               required
               sx={{ my: 2 }}
             />
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              sx={{ mt: 3, mb: 2, px: { xs: 10, mt: 15 } }}
-            >
-              {loading ? "作成中" : "グループを作成"}
-            </Button>
+            <Box textAlign="center">
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                sx={{ mt: 3, mb: 2, px: { xs: 10, mt: 15 } }}
+              >
+                {loading ? "作成中" : "グループを作成"}
+              </Button>
+            </Box>
           </Box>
         </Box>
       </Modal>
