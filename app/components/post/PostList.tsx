@@ -72,7 +72,10 @@ const PostList: React.FC<PostListProps> = ({ posts }) => {
         </Fragment>
       ))}
       <Box display={"flex"} justifyContent={"flex-end"} mb={3} mr={5}>
-        <Button href="/" sx={{ mb: 6, color: "white", bgcolor: "blue" }}>
+        <Button
+          href="/"
+          sx={{ mb: 6, color: "white", bgcolor: "primary.main" }}
+        >
           一覧に戻る
         </Button>
       </Box>
