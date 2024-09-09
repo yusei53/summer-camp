@@ -12,15 +12,20 @@ type TProps = {
 };
 
 const colors = ["#FF5733", "#33FF57", "#3357FF", "#F333FF", "#FF33A0"];
-
 const getRandomColor = () => colors[Math.floor(Math.random() * colors.length)];
+
+const truncateGroupName = (name: string) => {
+  const maxLength = 7;
+  if (name.length > maxLength) {
+    return name.slice(0, 7) + "…";
+  }
+  return name;
+};
 
 const GroupList: React.FC<TProps> = async ({ currentUserId }) => {
   if (!currentUserId) return null;
   const groups = await getGroups(currentUserId);
-
   if (!groups) return <div>グループがありません</div>;
-
   return (
     <Grid
       container
@@ -72,7 +77,7 @@ const GroupList: React.FC<TProps> = async ({ currentUserId }) => {
                 <FiberManualRecordIcon
                   sx={{ fontSize: 20, color: getRandomColor() }}
                 />
-                <Typography>{group.groupName}</Typography>
+                <Typography>{truncateGroupName(group.groupName)}</Typography>
               </Box>
               <Box>
                 <ColorLensIcon
