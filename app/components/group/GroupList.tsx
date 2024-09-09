@@ -10,12 +10,17 @@ type TProps = {
   currentUserId: User["id"] | undefined;
 };
 
+const truncateGroupName = (name: string) => {
+  const maxLength = 7;
+  if (name.length > maxLength) {
+    return name.slice(0, 7) + "…";
+  }
+  return name;
+};
 const GroupList: React.FC<TProps> = async ({ currentUserId }) => {
   if (!currentUserId) return;
   const groups = await getGroups(currentUserId);
-
   if (!groups) return <div>グループがありません</div>;
-
   return (
     <Grid
       container
@@ -65,7 +70,7 @@ const GroupList: React.FC<TProps> = async ({ currentUserId }) => {
                 ml={1}
               >
                 <FiberManualRecordIcon sx={{ fontSize: 20 }} />
-                <Typography>{group.groupName}</Typography>
+                <Typography>{truncateGroupName(group.groupName)}</Typography>
               </Box>
               <Box>
                 <ColorLensIcon
