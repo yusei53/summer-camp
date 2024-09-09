@@ -7,15 +7,11 @@ const getGroups = async (userId: string) => {
       select: {
         id: true,
         groupName: true,
-        _count: {
-          select: { posts: true }, // posts の数を取得
-        },
       },
     });
     return groups;
   } catch (error) {
     console.error("Error fetching groups:", error);
-    return null; // エラー時にnullを返す
   }
 };
 
