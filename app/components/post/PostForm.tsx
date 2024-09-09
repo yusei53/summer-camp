@@ -37,13 +37,16 @@ const PostForm: React.FC<TProps> = ({
 
   return (
     <>
-      <Button
-        onClick={handleOpenModal}
-        sx={{ mb: 3, color: "white", bgcolor: "blue" }}
-      >
-        新規作成
-      </Button>
-
+      <Box display={"flex"} justifyContent={"flex-end"} mb={6}>
+        <Button
+          onClick={handleOpenModal}
+          variant="contained"
+          color="primary"
+          sx={{ mb: 3 }}
+        >
+          新規作成
+        </Button>
+      </Box>
       <Modal open={modalOpen} onClose={handleCloseModal} disableAutoFocus>
         <Box
           component="form"
