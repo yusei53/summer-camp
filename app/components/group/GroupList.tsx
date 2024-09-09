@@ -42,6 +42,7 @@ const GroupList: React.FC<TProps> = async ({ currentUserId }) => {
               width: 180,
               height: 180,
               borderRadius: "16px",
+              position: "relative",
             }}
           >
             <CardContent
@@ -63,7 +64,15 @@ const GroupList: React.FC<TProps> = async ({ currentUserId }) => {
               <FiberManualRecordIcon sx={{ fontSize: 20 }} />
               <Typography component="div">{group.groupName}</Typography>
             </Box>
-            <AssignmentTurnedInOutlinedIcon sx={{ ml: 18 }} />
+            <Box display="flex" flexDirection="row" alignItems={"flex-end"}>
+              <AssignmentTurnedInOutlinedIcon
+                sx={{
+                  position: "absolute",
+                  bottom: 8,
+                  right: 8, // カードの右下に配置
+                }}
+              />
+            </Box>
           </Card>
         </Grid>
       ))}
