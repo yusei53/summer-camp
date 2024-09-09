@@ -6,7 +6,6 @@ const Home = async () => {
   return (
     currentUser && (
       <>
-        <div>ログイン中: ログインしてた時のUIは後で考える</div>
         <GroupFormContainer />
       </>
     )

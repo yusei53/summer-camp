@@ -8,7 +8,6 @@ const GroupPage = async ({ params }: { params: { groupId: string } }) => {
   return (
     currentUser && (
       <>
-        <div>ログイン中: ログインしてた時のUIは後で考える</div>
         <CategoryFormContainer groupId={groupId} />
       </>
     )
