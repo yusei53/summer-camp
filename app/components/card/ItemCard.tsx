@@ -1,13 +1,13 @@
 import { Box, Typography } from "@mui/material";
 
 type TProps = {
-  content: string;
+  postTitle: string;
 };
 
-const ItemCard: React.FC<TProps> = ({ content }) => {
+const ItemCard: React.FC<TProps> = ({ postTitle }) => {
   return (
     <Box border={2} p={3} m={3}>
-      <Typography>{content}</Typography>
+      <Typography>{postTitle}</Typography>
     </Box>
   );
 };
