@@ -1,6 +1,6 @@
 "use client";
 import { Fragment, useState } from "react";
-import { Modal, Box } from "@mui/material";
+import { Modal, Box, Button } from "@mui/material";
 import ItemCard from "../card/ItemCard";
 import ItemCardDescription from "../card/ItemCardDescription";
 
@@ -71,6 +71,11 @@ const PostList: React.FC<PostListProps> = ({ posts }) => {
           ))}
         </Fragment>
       ))}
+      <Box display={"flex"} justifyContent={"flex-end"} mb={3} mr={5}>
+        <Button href="/" sx={{ mb: 6, color: "white", bgcolor: "blue" }}>
+          一覧に戻る
+        </Button>
+      </Box>
     </Box>
   );
 };
