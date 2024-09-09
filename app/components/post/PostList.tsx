@@ -1,25 +1,77 @@
-import getPosts from "@/actions/getPosts";
+"use client";
+import { Fragment, useState } from "react";
+import { Modal, Box } from "@mui/material";
+import ItemCard from "../card/ItemCard";
+import ItemCardDescription from "../card/ItemCardDescription";
 
-const PostList = async ({ groupId }: { groupId: string }) => {
-  const posts = await getPosts(groupId);
-  return posts ? (
-    <ul>
+// propsの型定義
+type Post = {
+  id: string;
+  title: string;
+  descriptions: {
+    category: {
+      name: string;
+    };
+    id: number;
+    content: string;
+  }[];
+};
+
+type PostListProps = {
+  posts: Post[];
+};
+
+const PostList: React.FC<PostListProps> = ({ posts }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  return (
+    <Box position="relative">
       {posts.map((post) => (
-        <li key={post.id}>
-          <h3>{post.title}</h3>
-          <ul>
-            {post.descriptions.map((description) => (
-              <li key={description.id}>
-                <p>{description.category.name}</p>
-                <p>{description.content}</p>
-              </li>
-            ))}
-          </ul>
-        </li>
+        <Box key={post.id} onClick={() => handleOpenModal()}>
+          <ItemCard postTitle={post.title} />
+          {post.descriptions.map((description) => (
+            <Fragment key={description.id}>
+              <Modal
+                open={isModalOpen}
+                onClose={handleCloseModal}
+                BackdropProps={{
+                  onClick: handleCloseModal, // ここでバックドロップ（モーダル外側）をクリックしたときに閉じる
+                }}
+              >
+                <Box
+                  position="absolute"
+                  top="50%"
+                  left="50%"
+                  p={4}
+                  maxHeight={{ xs: "60%", md: "80%" }}
+                  minWidth={300}
+                  bgcolor="white"
+                  borderRadius="5px"
+                  sx={{
+                    transform: "translate(-50%, -50%)",
+                    overflowY: "scroll",
+                  }}
+                >
+                  <ItemCardDescription
+                    id={description.id}
+                    postTitle={post.title}
+                    descriptions={post.descriptions}
+                  />
+                </Box>
+              </Modal>
+            </Fragment>
+          ))}
+        </Box>
       ))}
-    </ul>
-  ) : (
-    <div>投稿がありません</div>
+    </Box>
   );
 };
 
