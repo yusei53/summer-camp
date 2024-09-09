@@ -1,14 +1,18 @@
-import getGroups from "@/actions/getGroups";
+import React from "react";
 import { Box, Card, CardContent, Typography, Grid } from "@mui/material";
 import { User } from "@prisma/client";
-import React from "react";
 import EditCalendarIcon from "@mui/icons-material/EditCalendar";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import ColorLensIcon from "@mui/icons-material/ColorLens";
 import Link from "next/link";
+import getGroups from "@/actions/getGroups";
+
 type TProps = {
   currentUserId: User["id"] | undefined;
 };
+
+const colors = ["#FF5733", "#33FF57", "#3357FF", "#F333FF", "#FF33A0"];
+const getRandomColor = () => colors[Math.floor(Math.random() * colors.length)];
 
 const truncateGroupName = (name: string) => {
   const maxLength = 7;
@@ -17,8 +21,9 @@ const truncateGroupName = (name: string) => {
   }
   return name;
 };
+
 const GroupList: React.FC<TProps> = async ({ currentUserId }) => {
-  if (!currentUserId) return;
+  if (!currentUserId) return null;
   const groups = await getGroups(currentUserId);
   if (!groups) return <div>グループがありません</div>;
   return (
@@ -69,7 +74,9 @@ const GroupList: React.FC<TProps> = async ({ currentUserId }) => {
                 alignItems={"center"}
                 ml={1}
               >
-                <FiberManualRecordIcon sx={{ fontSize: 20 }} />
+                <FiberManualRecordIcon
+                  sx={{ fontSize: 20, color: getRandomColor() }}
+                />
                 <Typography>{truncateGroupName(group.groupName)}</Typography>
               </Box>
               <Box>

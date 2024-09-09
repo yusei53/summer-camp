@@ -5,7 +5,7 @@ import EditCalendarIcon from "@mui/icons-material/EditCalendar";
 const GoogleLoginForm = () => {
   return (
     <Box
-      mt={22}
+      my={22}
       mx={{ md: 25 }}
       py={5}
       px={2}
