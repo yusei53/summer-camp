@@ -14,8 +14,8 @@ type TProps = {
   errors: FormState<FieldValues>["errors"];
   loading: boolean;
   categories: Category[];
-  modalOpen: boolean; // モーダルの開閉状態
-  setModalOpen: (open: boolean) => void; // モーダルの開閉状態を管理する関数
+  modalOpen: boolean;
+  setModalOpen: (open: boolean) => void;
 };
 
 const PostForm: React.FC<TProps> = ({
@@ -73,7 +73,6 @@ const PostForm: React.FC<TProps> = ({
               Post の作成
             </Typography>
 
-            {/* タイトルフィールド */}
             <CustomInput
               id="title"
               label="タイトル"
@@ -84,7 +83,6 @@ const PostForm: React.FC<TProps> = ({
               sx={{ my: 2 }}
             />
 
-            {/* 各カテゴリに対応する説明フィールド */}
             {categories.map((field, index) => (
               <Box
                 key={field.id}
@@ -107,13 +105,12 @@ const PostForm: React.FC<TProps> = ({
                 />
                 <input
                   type="hidden"
-                  {...register(`descriptions.${index}.categoryId`)} // categoryId を hidden フィールドで送信
+                  {...register(`descriptions.${index}.categoryId`)}
                   value={field.id}
                 />
               </Box>
             ))}
 
-            {/* 送信ボタン */}
             <Button
               type="submit"
               variant="contained"
