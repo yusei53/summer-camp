@@ -23,8 +23,10 @@ const ItemCardDescription: React.FC<ItemCardDescriptionProps> = ({
       </Typography>
       {posts.map((post) => (
         <>
-          <Typography variant="body1">{post.category}</Typography>
-          <Typography variant="body1">{post.description}</Typography>
+          <Typography mt={3} mb={1} fontWeight="bold" fontSize={20}>
+            {post.category}
+          </Typography>
+          <Typography>{post.description}</Typography>
         </>
       ))}
     </>
