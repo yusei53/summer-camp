@@ -10,6 +10,7 @@ import {
   List,
   ListItem,
   ListItemText,
+  Button,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ItemCard from "../card/ItemCard";
@@ -153,7 +154,10 @@ const PostList: React.FC<PostListProps> = ({ posts }) => {
         posts.map((post) => (
           <Fragment key={post.id}>
             <Box onClick={() => handleOpenModal(post.id)}>
-              <ItemCard postTitle={post.title} />
+              <ItemCard
+                postTitle={post.title}
+                description={post.descriptions[selectedDescriptionIndex]}
+              />
             </Box>
             {post.descriptions.map((description) => (
               <Modal
