@@ -64,7 +64,9 @@ const GroupList: React.FC<TProps> = async ({ currentUserId }) => {
                 alignItems={"center"}
                 ml={1}
               >
-                <FiberManualRecordIcon sx={{ fontSize: 20 }} />
+                <FiberManualRecordIcon
+                  sx={{ fontSize: 20, color: "rgb(255, 175, 170)" }}
+                />
                 <Typography>{group.groupName}</Typography>
               </Box>
               <Box>
