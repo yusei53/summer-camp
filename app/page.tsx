@@ -7,7 +7,6 @@ const Home = async () => {
   const currentUser = await getCurrentUser();
   return currentUser ? (
     <>
-      <div>ログイン中: ログインしてた時のUIは後で考える</div>
       <LogoutButton />
       <GroupFormContainer />
     </>
