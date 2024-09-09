@@ -28,6 +28,7 @@ const GroupList: React.FC<TProps> = async ({ currentUserId }) => {
     >
       {groups.map((group) => (
         <Grid
+          key={group.id}
           item={true}
           xs={12}
           md={4}
