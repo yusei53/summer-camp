@@ -1,6 +1,5 @@
 import getGroups from "@/actions/getGroups";
-import { Box, Card, CardContent, Typography } from "@mui/material";
-import Grid from "@mui/material/Grid2";
+import { Box, Card, CardContent, Typography, Grid } from "@mui/material";
 import { User } from "@prisma/client";
 import React from "react";
 import EditCalendarIcon from "@mui/icons-material/EditCalendar";
@@ -29,7 +28,9 @@ const GroupList: React.FC<TProps> = async ({ currentUserId }) => {
     >
       {groups.map((group) => (
         <Grid
-          size={{ xs: 12, md: 4 }}
+          item={true}
+          xs={12}
+          md={4}
           sx={{
             display: "flex",
             justifyContent: "center",
