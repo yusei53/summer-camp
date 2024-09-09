@@ -5,6 +5,7 @@ import React from "react";
 import EditCalendarIcon from "@mui/icons-material/EditCalendar";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import AssignmentTurnedInOutlinedIcon from "@mui/icons-material/AssignmentTurnedInOutlined";
+import Link from "next/link";
 type TProps = {
   currentUserId: User["id"] | undefined;
 };
@@ -20,9 +21,6 @@ const GroupList: React.FC<TProps> = async ({ currentUserId }) => {
       container
       spacing={{ xs: 3, md: 5 }}
       sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
         mx: 10,
       }}
     >
@@ -35,47 +33,51 @@ const GroupList: React.FC<TProps> = async ({ currentUserId }) => {
           sx={{
             display: "flex",
             justifyContent: "center",
-            alignItems: "center",
           }}
         >
-          <Card
-            key={group.id}
-            sx={{
-              width: 180,
-              height: 180,
-              borderRadius: "16px",
-              position: "relative",
-            }}
+          <Link
+            href={`/category/${group.id}`}
+            style={{ textDecoration: "none" }}
           >
-            <CardContent
+            <Card
+              key={group.id}
               sx={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
+                width: 180,
+                height: 180,
+                borderRadius: "16px",
+                position: "relative",
               }}
             >
-              <EditCalendarIcon sx={{ fontSize: 40, mt: 4, mb: 3 }} />
-            </CardContent>
-            <Box
-              display="flex"
-              flexDirection="row"
-              alignItems={"flex-start"}
-              ml={1}
-            >
-              <FiberManualRecordIcon sx={{ fontSize: 20 }} />
-              <Typography component="div">{group.groupName}</Typography>
-            </Box>
-            <Box display="flex" flexDirection="row" alignItems={"flex-end"}>
-              <AssignmentTurnedInOutlinedIcon
+              <CardContent
                 sx={{
-                  position: "absolute",
-                  bottom: 8,
-                  right: 8, // カードの右下に配置
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
                 }}
-              />
-            </Box>
-          </Card>
+              >
+                <EditCalendarIcon sx={{ fontSize: 40, mt: 4, mb: 3 }} />
+              </CardContent>
+              <Box
+                display="flex"
+                flexDirection="row"
+                alignItems={"center"}
+                ml={1}
+              >
+                <FiberManualRecordIcon sx={{ fontSize: 20 }} />
+                <Typography>{group.groupName}</Typography>
+              </Box>
+              <Box>
+                <AssignmentTurnedInOutlinedIcon
+                  sx={{
+                    position: "absolute",
+                    bottom: 10,
+                    right: 10,
+                  }}
+                />
+              </Box>
+            </Card>
+          </Link>
         </Grid>
       ))}
     </Grid>
