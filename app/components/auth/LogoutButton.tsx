@@ -5,7 +5,7 @@ import { signOut } from "next-auth/react";
 
 const GoogleLoginButton = () => {
   return (
-    <Box>
+    <Box mt={5}>
       <Button
         label="ログアウト"
         onClick={() => signOut()}
