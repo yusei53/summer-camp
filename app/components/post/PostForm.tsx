@@ -42,7 +42,7 @@ const PostForm: React.FC<TProps> = ({
           onClick={handleOpenModal}
           variant="contained"
           color="primary"
-          sx={{ mb: 3 }}
+          sx={{ mb: 3, mr: 3 }}
         >
           新規作成
         </Button>
