@@ -33,7 +33,7 @@ const GoogleLoginForm = () => {
         メモパレット
       </Typography>
       <Typography textAlign={"center"} my={4} fontSize={14}>
-        ログインすると〇〇の機能が使えるようになります
+        オリジナルのメモとその絞り込みができるメモ管理アプリ
       </Typography>
       <GoogleLoginButton />
     </Box>
