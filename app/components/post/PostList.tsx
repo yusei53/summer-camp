@@ -56,61 +56,59 @@ const PostList: React.FC<PostListProps> = ({ posts }) => {
 
   return (
     <Box position="relative">
-      <Accordion
-        expanded={accordionOpen}
-        onChange={toggleAccordion}
-        sx={{
-          boxShadow: "none",
-          maxWidth: "180px",
-          border: "1px solid #ddd",
-          borderRadius: "8px",
-          mx: 3,
-          "&.Mui-expanded": {
+      <Box mx={3}>
+        <Accordion
+          expanded={accordionOpen}
+          onChange={toggleAccordion}
+          sx={{
+            boxShadow: "none",
             maxWidth: "180px",
-          },
-        }}
-      >
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="category-list-content"
-          id="category-list-header"
-          sx={{
-            my: -0.5,
+            border: "1px solid #ddd",
+            borderRadius: "8px",
+            height: "fit-content",
           }}
         >
-          <Typography fontSize={13}>カテゴリー一覧</Typography>
-        </AccordionSummary>
-        <AccordionDetails
-          sx={{
-            mt: -1,
-            padding: "1px 0",
-            py: 0,
-          }}
-        >
-          <List>
-            {posts[0]?.descriptions.map((description, index) => (
-              <ListItem
-                key={description.id}
-                onClick={() => handleSelectDescription(index)}
-                disablePadding
-                sx={{
-                  "&:hover": {
-                    bgcolor: "#f7f7f7",
-                  },
-                  bgcolor:
-                    selectedDescriptionIndex === index ? "#f7f7f7" : "white",
-                }}
-              >
-                <ListItemText
-                  primary={description.category.name}
-                  primaryTypographyProps={{ fontSize: 12, pl: 1, py: 0.2 }}
-                />
-              </ListItem>
-            ))}
-          </List>
-        </AccordionDetails>
-      </Accordion>
-
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="category-list-content"
+            id="category-list-header"
+            sx={{
+              my: -0.5,
+            }}
+          >
+            <Typography fontSize={13}>カテゴリーで絞る</Typography>
+          </AccordionSummary>
+          <AccordionDetails
+            sx={{
+              mt: -1,
+              padding: "1px 0",
+              py: 0,
+            }}
+          >
+            <List>
+              {posts[0]?.descriptions.map((description, index) => (
+                <ListItem
+                  key={description.id}
+                  onClick={() => handleSelectDescription(index)}
+                  disablePadding
+                  sx={{
+                    "&:hover": {
+                      bgcolor: "#f7f7f7",
+                    },
+                    bgcolor:
+                      selectedDescriptionIndex === index ? "#f7f7f7" : "white",
+                  }}
+                >
+                  <ListItemText
+                    primary={description.category.name}
+                    primaryTypographyProps={{ fontSize: 12, pl: 1, py: 0.2 }}
+                  />
+                </ListItem>
+              ))}
+            </List>
+          </AccordionDetails>
+        </Accordion>
+      </Box>
       {/* 各ポストの表示 */}
       {posts.map((post) => (
         <Fragment key={post.id}>
