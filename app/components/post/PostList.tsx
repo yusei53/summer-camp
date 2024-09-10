@@ -65,7 +65,6 @@ const PostList: React.FC<PostListProps> = ({ posts }) => {
             maxWidth: "180px",
             border: "1px solid #ddd",
             borderRadius: "8px",
-            height: "fit-content",
           }}
         >
           <AccordionSummary
