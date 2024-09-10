@@ -108,45 +108,6 @@ const PostList: React.FC<PostListProps> = ({ posts }) => {
           </AccordionDetails>
         </Accordion>
       </Box>
-      {/* 各ポストの表示 */}
-      {posts.map((post) => (
-        <Fragment key={post.id}>
-          <Box onClick={() => handleOpenModal(post.id)}>
-            {/* description の選択されたインデックスを ItemCard に渡す */}
-            <ItemCard
-              postTitle={post.title}
-              description={post.descriptions[selectedDescriptionIndex]} // 選択されたdescriptionを表示
-            />
-          </Box>
-
-          <Modal
-            open={openPostId === post.id}
-            onClose={handleCloseModal}
-            disableAutoFocus
-          >
-            <Box
-              position="absolute"
-              top="50%"
-              left="50%"
-              p={4}
-              maxHeight={{ xs: "60%", md: "80%" }}
-              minWidth={300}
-              bgcolor="white"
-              borderRadius="5px"
-              sx={{
-                transform: "translate(-50%, -50%)",
-                overflowY: "scroll",
-              }}
-            >
-              <ItemCardDescription
-                id={post.descriptions[selectedDescriptionIndex].id} // 選択された description の ID
-                postTitle={post.title}
-                descriptions={post.descriptions}
-              />
-            </Box>
-          </Modal>
-        </Fragment>
-      ))}
       {posts.length > 0 ? (
         posts.map((post) => (
           <Fragment key={post.id}>
